@@ -14,11 +14,12 @@ import { ListByCategoryController } from './controllers/product/ListByCategoryCo
 import { CreateOrderController } from './controllers/order/CreateOrderController';
 import { RemoveOrderController } from './controllers/order/RemoveOrderController';
 import { AddItemController } from './controllers/order/AddItemController';
+import { RemoveItemController } from './controllers/order/RemoveItemController';
+import { SendOrderController } from './controllers/order/SendOrderController';
 
 import { isAuthenticated } from './middlewares/isAuthenticated';
 
 import uploadConfig from './config/multer';
-import { RemoveItemController } from './controllers/order/RemoveItemController';
 
 const router = Router();
 
@@ -59,5 +60,6 @@ router.delete(
   isAuthenticated,
   new RemoveItemController().handle
 );
+router.put('/order/send', isAuthenticated, new SendOrderController().handle);
 
 export { router };
